@@ -1,4 +1,4 @@
-# [LifeAnalytics](https://ccl-and-ddy.github.io/life-analytics/)
+# [Life Analytics](https://ccl-and-ddy.github.io/life-analytics/)
 
 A personalized dashboard to organize and analyze your life.
 
