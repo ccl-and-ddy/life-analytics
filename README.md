@@ -1,6 +1,10 @@
-# LifeAnalytics
+# [Life Analytics](https://ccl-and-ddy.github.io/life-analytics/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+A personalized dashboard to organize and analyze your life.
+
+Copyright &copy; [Cecile Zhang](http://cecilezhang.com) and [Duncan Cai](https://github.com/ddycai). All rights reserved.
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2. Licensed under the [MIT License](./LICENSE).
 
 ## Development server
 
