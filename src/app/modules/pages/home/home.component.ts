@@ -1,13 +1,12 @@
+import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-selector/dashboard-type-selector.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  host: {
-    '(document:click)': 'onClick($event)',
-  },
 })
 export class HomeComponent implements OnInit {
 
@@ -18,13 +17,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick(event: Event) {
-    if (!this._eref.nativeElement.contains(event.target)) {
-      this.isSelectorOpen = false;
-    }
-  }
-
   openSelector() {
     this.isSelectorOpen = true;
+  }
+
+  closeSelector() {
+    this.isSelectorOpen = false;
   }
 }
