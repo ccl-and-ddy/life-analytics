@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Overlay, OverlayRef } from "@angular/cdk/overlay";
+import { ComponentPortal } from "@angular/cdk/portal";
+import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-selector/dashboard-type-selector.component';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  overlayRef: OverlayRef;
+
+  constructor(private overlay: Overlay) {
+    this.overlayRef = this.overlay.create();
+  }
 
   ngOnInit(): void {
   }
 
+  open() {
+    const componentPortal = new ComponentPortal(DashboardTypeSelectorComponent);
+    this.overlayRef.attach(componentPortal);
+  }
 }
