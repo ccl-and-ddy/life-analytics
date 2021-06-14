@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   isSelectorOpen = false;
 
-  constructor(private _eref: ElementRef) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
