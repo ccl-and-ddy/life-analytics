@@ -3,8 +3,10 @@
 <main>
   <h1>Dashboard</h1>
   <!-- <section class="runLog"></section> -->
-  <button class="addDashboard">
+  <button class="addDashboard" (click)="openSelector()">
     <img src="" alt="">
     <p>add new dashboard</p>
   </button>
 </main>
+
+<app-dashboard-type-selector *ngIf="isSelectorOpen"></app-dashboard-type-selector>
