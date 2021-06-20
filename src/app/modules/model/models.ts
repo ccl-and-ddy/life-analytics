@@ -1,5 +1,5 @@
-interface UserData {
-  id: string;
+export interface UserData {
+  // id: string;
   dashboards: Dashboard[];
 }
 
@@ -30,4 +30,3 @@ interface AmountDashboardDay {
   date: Date;
   amount: number;
 }
-
