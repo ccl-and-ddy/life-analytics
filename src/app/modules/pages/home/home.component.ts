@@ -1,5 +1,4 @@
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-selector/dashboard-type-selector.component';
 
@@ -10,18 +9,12 @@ import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-
 })
 export class HomeComponent implements OnInit {
 
-  isSelectorOpen = false;
+  constructor(private dialog: MatDialog) { }
 
-  constructor() { }
+  openDialog() {
+    const dialogRef = this.dialog.open(DashboardTypeSelectorComponent);
+  }
 
   ngOnInit(): void {
-  }
-
-  openSelector() {
-    this.isSelectorOpen = true;
-  }
-
-  closeSelector() {
-    this.isSelectorOpen = false;
   }
 }
