@@ -2,13 +2,9 @@
 
 <main>
   <h1>Dashboard</h1>
-  <ul>
-    <!-- dynamically added list items -->
-  </ul>
-  <button class="addDashboard" (click)="openSelector()">
+  <!-- <section class="runLog"></section> -->
+  <button class="addDashboard" (click)="openDialog()">
     <img src="" alt="">
     <p>add new dashboard</p>
   </button>
 </main>
-
-<app-dashboard-type-selector *ngIf="isSelectorOpen" (clickOutside)="closeSelector()"></app-dashboard-type-selector>
