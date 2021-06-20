@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +14,6 @@ import { AboutComponent } from './modules/pages/about/about.component';
 import { DashboardTypeSelectorComponent } from './modules/components/dashboard-type-selector/dashboard-type-selector.component';
 import { DailyDashboardComponent } from './modules/components/dashboard-types/daily-dashboard/daily-dashboard.component';
 import { AmountDashboardComponent } from './modules/components/dashboard-types/amount-dashboard/amount-dashboard.component';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
