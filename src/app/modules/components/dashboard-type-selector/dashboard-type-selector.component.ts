@@ -28,4 +28,10 @@ export class DashboardTypeSelectorComponent implements OnInit {
     }
     this.isComponentInstantiated = true;
   }
+
+  saveDashboardType() {
+    localStorage.setItem('dashboard', 'daily');
+    let test = localStorage.getItem('dashboard');
+    console.log(test);
+  }
 }
