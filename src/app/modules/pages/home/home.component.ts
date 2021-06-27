@@ -2,6 +2,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-selector/dashboard-type-selector.component';
 import {UserData} from '../../model/models';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,9 @@ import {UserData} from '../../model/models';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, userService:UserService) { 
+
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(DashboardTypeSelectorComponent);
@@ -21,15 +24,15 @@ export class HomeComponent implements OnInit {
   }
 
   saveUser() {
-    const user:UserData = {
-      dashboards:[],
-    }
+    // const user:UserData = {
+    //   dashboards:[],
+    // }
 
-    if(!localStorage.getItem('userData')) {
-      localStorage.setItem('userData', JSON.stringify(user));
-    }
+    // if(!localStorage.getItem('userData')) {
+    //   localStorage.setItem('userData', JSON.stringify(user));
+    // }
 
-    let test = localStorage.getItem('userData');
-    console.log(test);
+    // let test = localStorage.getItem('userData');
+    // console.log(test);
   }
 }

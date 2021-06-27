@@ -4,16 +4,17 @@ export interface UserData {
 }
 
 interface BaseDashboard {
-  id: string;
+  id?: string;
   name: string; // e.g. "run log"
 }
 
 interface DailyDashboard extends BaseDashboard {
-  days: DailyDashboardDay[];
+  days?: DailyDashboardDay[];
   kind: 'daily';
 }
 
 type Mood = 'happy'|'neutral'|'sad';
+
 interface DailyDashboardDay {
   date: Date;
   mood: Mood;
@@ -22,9 +23,9 @@ interface DailyDashboardDay {
 type AmountInputMethod = 'time_range'|'amount';
 
 interface AmountDashboard extends BaseDashboard {
-  days: AmountDashboardDay[];
-  unit: string; // e.g. km or hours
-  inputMethod: AmountInputMethod;
+  days?: AmountDashboardDay[];
+  unit?: string; // e.g. km or hours
+  inputMethod?: AmountInputMethod;
   kind: 'amount';
 }
 

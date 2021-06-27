@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { ElementRef, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard-type-selector',
@@ -16,7 +17,7 @@ export class DashboardTypeSelectorComponent implements OnInit {
 
   isComponentInstantiated = false;
 
-  constructor(private _eref: ElementRef) { }
+  constructor(private _eref: ElementRef, readonly userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -29,8 +30,7 @@ export class DashboardTypeSelectorComponent implements OnInit {
     this.isComponentInstantiated = true;
   }
 
-  saveDashboardType(type:string) {
-    localStorage.setItem('userData.dashboard', type);
-
+  saveDashboardType(kind:string) {
+    this.userService.writeUserData(kind);
   }
 }
