@@ -1,5 +1,4 @@
-import { EventEmitter } from '@angular/core';
-import { ElementRef, Output } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
@@ -7,30 +6,25 @@ import { UserService } from '../../services/user.service';
   selector: 'app-dashboard-type-selector',
   templateUrl: './dashboard-type-selector.component.html',
   styleUrls: ['./dashboard-type-selector.component.scss'],
-  host: {
-    '(document:click)': 'onClick($event)',
-  },
 })
 export class DashboardTypeSelectorComponent implements OnInit {
 
-  @Output() clickOutside = new EventEmitter<void>();
-
-  isComponentInstantiated = false;
-
-  constructor(private _eref: ElementRef, readonly userService:UserService) { }
+  constructor(readonly userService: UserService, private dialogRef: MatDialogRef<DashboardTypeSelectorComponent>) { }
 
   ngOnInit(): void {
   }
 
+  createDashboard(kind:string) {
+    // save dashboard type in local storage
+    this.userService.writeUserData(kind);
 
-  onClick(event: Event) {
-    if (this.isComponentInstantiated && !this._eref.nativeElement.contains(event.target)) {
-      this.clickOutside.emit();
-    }
-    this.isComponentInstantiated = true;
+    // add dashboard on page
+
+    // close modal
+    this.closeDialog();
   }
 
-  saveDashboardType(kind:string) {
-    this.userService.writeUserData(kind);
+  closeDialog() {
+    this.dialogRef.close();
   }
 }
