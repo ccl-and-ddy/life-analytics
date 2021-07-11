@@ -1,8 +1,9 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { DashboardTypeSelectorComponent } from '../../components/dashboard-type-selector/dashboard-type-selector.component';
-import {UserData} from '../../model/models';
+import {Dashboard, UserData} from '../../model/models';
 import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,10 @@ import { UserService } from '../../services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, userService:UserService) { 
+  userData: Observable<UserData>;
 
+  constructor(private dialog: MatDialog, userService:UserService) { 
+    this.userData = userService.userData.asObservable();
   }
 
   openDialog() {
@@ -21,6 +24,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.saveUser();
+  }
+
+  getRouterLink(dashboard: Dashboard) {
+    return ['/dashboard', dashboard.id];
   }
 
   saveUser() {
