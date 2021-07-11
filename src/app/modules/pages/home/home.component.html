@@ -2,12 +2,13 @@
 
 <main>
   <h1>Dashboard</h1>
-  <ul>
-    <!-- load dashboards -->
+  <ul *ngIf="userData | async as userData">
+    <li *ngFor="let dashboard of userData.dashboards">
+      <a [routerLink]="getRouterLink(dashboard)">{{dashboard.name}}</a> ({{dashboard.kind}})
+    </li>
   </ul>
   <!-- <section class="runLog"></section> -->
   <button mat-raised-button color="primary" class="addDashboard" (click)="openDialog()">
-    <img src="" alt="">
     <p>add new dashboard</p>
   </button>
 </main>

@@ -1,15 +1,18 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import { UserData } from '../model/models';
+import {map, take} from 'rxjs/operators';
+import { BehaviorSubject, Observable, of as observableOf, ReplaySubject } from 'rxjs';
+import { Dashboard, UserData } from '../model/models';
+
+const EMPTY_USER_DATA = {dashboards: []};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userData: UserData = {dashboards:[]};
+  userData = new ReplaySubject<UserData>(1);
 
-  constructor() { 
-    this.userData = this.readUserData() ?? this.userData;
+  constructor() {
+    this.userData.next(this.readUserData() ?? EMPTY_USER_DATA);
     console.log('userData', this.userData);
     console.log('local storage', localStorage.getItem('userData'));
   }
@@ -24,17 +27,25 @@ export class UserService {
   }
   
   writeUserData(kind:string) {
-    if (kind === 'daily' || kind === 'amount') {
-      this.userData.dashboards.push({
-        name:'default', 
-        kind,
-      })
-
-      const userDataString = JSON.stringify(this.userData);
-      localStorage.setItem('userData', userDataString);
-    } else {
-      alert('bad kid');
-    }
+    this.userData.pipe(take(1)).subscribe(userData => {
+      const {dashboards} = userData;
+      if (kind === 'daily' || kind === 'amount') {
+        let nextId = 0;
+        if (dashboards.length) {
+          nextId = Math.max(...dashboards.map(dashboard => Number(dashboard.id))) + 1;
+        }
+        const newDashboard: Dashboard = {
+          id: `${nextId}`,
+          name:'default', 
+          kind,
+        };
+        const newUserData = {...userData, dashboards: [...dashboards, newDashboard]};
+        const userDataString = JSON.stringify(newUserData);
+        localStorage.setItem('userData', userDataString);
+        this.userData.next(newUserData);
+      } else {
+        console.log('Error adding user data');
+      }
+    });
   }
-
 }

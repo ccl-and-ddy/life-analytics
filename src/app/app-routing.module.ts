@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-    path: "dashboard",
+    path: "dashboard/:id",
     component: DashboardPageComponent,
   }
 ];
