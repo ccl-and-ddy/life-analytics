@@ -14,6 +14,7 @@ import { AboutComponent } from './modules/pages/about/about.component';
 import { DashboardTypeSelectorComponent } from './modules/components/dashboard-type-selector/dashboard-type-selector.component';
 import { DailyDashboardComponent } from './modules/components/dashboard-types/daily-dashboard/daily-dashboard.component';
 import { AmountDashboardComponent } from './modules/components/dashboard-types/amount-dashboard/amount-dashboard.component';
+import { DashboardPageComponent } from './modules/pages/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AmountDashboardComponent } from './modules/components/dashboard-types/a
     AboutComponent,
     DashboardTypeSelectorComponent,
     DailyDashboardComponent,
-    AmountDashboardComponent
+    AmountDashboardComponent,
+    DashboardPageComponent
   ],
   imports: [
     BrowserModule,
